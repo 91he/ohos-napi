@@ -1,7 +1,7 @@
 package js
 
 import (
-	"github.com/akshayganeshen/napi-go"
+	napi "github.com/likuai2010/ohos-napi"
 )
 
 type Callback = func(env Env, this Value, args []Value) any

@@ -7,7 +7,7 @@ A Go library for building Node.js Native Addons using Node-API.
 Use `go get` to install the library:
 
 ```sh
-go get -u github.com/akshayganeshen/napi-go
+go get -u github.com/likuai2010/ohos-napi
 ```
 
 Then use the library to define handlers:
@@ -15,7 +15,7 @@ Then use the library to define handlers:
 ```go
 package handlers
 
-import "github.com/akshayganeshen/napi-go"
+import "github.com/likuai2010/ohos-napi"
 
 func MyHandler(env napi.Env, info napi.CallbackInfo) napi.Value {
   return nil
@@ -27,7 +27,7 @@ Next, create a `main.go` that registers all module exports:
 ```go
 package main
 
-import "github.com/akshayganeshen/napi-go/entry"
+import "github.com/likuai2010/ohos-napi/entry"
 
 func init() {
   entry.Export("myHandler", MyHandler)
@@ -59,8 +59,8 @@ package provides functions similar to the `syscall/js` standard library.
 package main
 
 import (
-  "github.com/akshayganeshen/napi-go/entry"
-  "github.com/akshayganeshen/napi-go/js"
+  "github.com/likuai2010/ohos-napi/entry"
+  "github.com/likuai2010/ohos-napi/js"
 )
 
 func init() {

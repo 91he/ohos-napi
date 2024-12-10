@@ -1,6 +1,9 @@
 package napi
 
 /*
+
+#cgo CFLAGS: -I/usr/include/napi
+#include "gonapi.h"
 #include <napi/native_api.h>
 */
 import "C"
@@ -93,6 +96,7 @@ func CreateThreadsafeFunction(
 	fn Value,
 	asyncResource, asyncResourceName Value,
 	maxQueueSize, initialThreadCount int,
+	callback bool,
 ) (ThreadsafeFunction, Status) {
 	var result ThreadsafeFunction
 	status := Status(C.napi_create_threadsafe_function(
@@ -105,18 +109,36 @@ func CreateThreadsafeFunction(
 		nil,
 		nil,
 		nil,
-		nil,
+		hasCallback(callback),
 		(*C.napi_threadsafe_function)(unsafe.Pointer(&result)),
 	))
 	return result, status
 }
+func hasCallback(callback bool) C.napi_threadsafe_function_call_js {
+	if callback {
+		return C.ThreadsafeFunctionCallback()
+	} else {
+		return nil
+	}
+}
+
+//export CallThreadsafeFunctionCallback
+func CallThreadsafeFunctionCallback(wrap unsafe.Pointer, env C.napi_env, fn C.napi_value, ctx unsafe.Pointer, data unsafe.Pointer) {
+	caller := (*ThreadsafeFunctionsCaller)(wrap)
+	caller.Cb(Env(env), Value(fn), ctx, data)
+}
 
 func CallThreadsafeFunction(
 	fn ThreadsafeFunction,
+	key, value Value,
 ) Status {
+	params := C.CallbackData{
+		Key:   C.napi_value(key),
+		Value: C.napi_value(value),
+	}
 	return Status(C.napi_call_threadsafe_function(
 		C.napi_threadsafe_function(fn),
-		nil,
+		unsafe.Pointer(&params),
 		C.napi_tsfn_blocking,
 	))
 }

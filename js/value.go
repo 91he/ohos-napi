@@ -1,8 +1,6 @@
 package js
 
-import (
-	"github.com/akshayganeshen/napi-go"
-)
+import "github.com/likuai2010/napi-go"
 
 type Value struct {
 	Env   Env

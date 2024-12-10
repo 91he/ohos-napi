@@ -3,7 +3,7 @@ package js
 import (
 	"errors"
 
-	"github.com/akshayganeshen/napi-go"
+	napi "github.com/likuai2010/ohos-napi"
 )
 
 type Promise struct {
@@ -84,6 +84,7 @@ func (p *Promise) reset(e Env) {
 		nil, asyncResourceName.Value,
 		0,
 		1, // initialize with 1 acquisition
+		false,
 	)
 	if st != napi.StatusOK {
 		panic(napi.StatusError(st))
@@ -102,7 +103,7 @@ func (p *Promise) ensurePending() {
 }
 
 func (p *Promise) settle() {
-	st := napi.CallThreadsafeFunction(p.ThreadsafeFunction)
+	st := napi.CallThreadsafeFunction(p.ThreadsafeFunction, nil, nil)
 	if st != napi.StatusOK {
 		panic(napi.StatusError(st))
 	}
