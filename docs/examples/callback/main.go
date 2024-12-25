@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/akshayganeshen/napi-go/entry"
 	napi "github.com/likuai2010/ohos-napi"
+	"github.com/likuai2010/ohos-napi/entry"
 )
 
 func init() {

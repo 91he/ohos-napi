@@ -1,8 +1,6 @@
 package js
 
-import (
-	"github.com/akshayganeshen/napi-go"
-)
+import napi "github.com/likuai2010/ohos-napi"
 
 type Func struct {
 	Value
