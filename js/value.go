@@ -1,6 +1,6 @@
 package js
 
-import "github.com/likuai2010/napi-go"
+import napi "github.com/likuai2010/ohos-napi"
 
 type Value struct {
 	Env   Env
