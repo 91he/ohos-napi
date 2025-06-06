@@ -1,6 +1,6 @@
 package js
 
-import napi "github.com/likuai2010/ohos-napi"
+import napi "github.com/91he/ohos-napi"
 
 type Func struct {
 	Value
@@ -20,6 +20,7 @@ func (e Env) CreateThreadsafeFunction(fn Value, resourceName string) TsFunc {
 		Status: stuats,
 	}
 }
+
 func (t TsFunc) Call(key, value Value) {
 	napi.CallThreadsafeFunction(t.Value, key.Value, value.Value)
 }

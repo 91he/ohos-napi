@@ -8,7 +8,9 @@ package entry
 import "C"
 
 import (
-	napi "github.com/likuai2010/ohos-napi"
+	"unsafe"
+
+	napi "github.com/91he/ohos-napi"
 )
 
 //export InitializeModule
@@ -23,4 +25,10 @@ func InitializeModule(cEnv C.napi_env, cExports C.napi_value) C.napi_value {
 	}
 
 	return cExports
+}
+
+func RegisterModule(modname string) {
+	cmodname := C.CString(modname)
+	defer C.free(unsafe.Pointer(cmodname))
+	C.register_module(cmodname)
 }

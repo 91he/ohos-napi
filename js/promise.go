@@ -3,7 +3,7 @@ package js
 import (
 	"errors"
 
-	napi "github.com/likuai2010/ohos-napi"
+	napi "github.com/91he/ohos-napi"
 )
 
 type Promise struct {

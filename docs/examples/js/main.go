@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	napi "github.com/likuai2010/ohos-napi"
-	"github.com/likuai2010/ohos-napi/entry"
-	"github.com/likuai2010/ohos-napi/js"
+	napi "github.com/91he/ohos-napi"
+	"github.com/91he/ohos-napi/entry"
+	"github.com/91he/ohos-napi/js"
 )
 
 func init() {

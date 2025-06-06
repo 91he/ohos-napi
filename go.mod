@@ -1,3 +1,3 @@
-module github.com/likuai2010/ohos-napi
+module github.com/91he/ohos-napi
 
-go 1.18
+go 1.24

@@ -1,6 +1,6 @@
 package js
 
-import napi "github.com/likuai2010/ohos-napi"
+import napi "github.com/91he/ohos-napi"
 
 type Value struct {
 	Env   Env

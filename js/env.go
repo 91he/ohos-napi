@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	napi "github.com/likuai2010/ohos-napi"
+	napi "github.com/91he/ohos-napi"
 )
 
 type Env struct {
