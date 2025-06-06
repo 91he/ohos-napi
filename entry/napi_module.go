@@ -4,6 +4,8 @@ package entry
 #include <stdlib.h>
 
 #include "./entry.h"
+
+void register_module(const char *);
 */
 import "C"
 
